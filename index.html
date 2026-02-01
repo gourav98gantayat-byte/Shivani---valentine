@@ -10,7 +10,7 @@
       margin: 0;
       padding: 0;
       background: #ffe6eb;
-      font-family: "Helvetica", sans-serif;
+      font-family: Helvetica, Arial, sans-serif;
       text-align: center;
       overflow: hidden;
     }
@@ -19,12 +19,6 @@
       color: #ff2f6d;
       margin-top: 120px;
       font-size: 28px;
-    }
-
-    .subtitle {
-      margin-top: 10px;
-      font-size: 16px;
-      color: #333;
     }
 
     .buttons {
@@ -37,7 +31,7 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      margin: 5px;
+      margin: 6px;
     }
 
     #yesBtn {
@@ -55,12 +49,19 @@
       display: none;
     }
 
+    .subtitle {
+      margin-top: 12px;
+      font-size: 16px;
+      color: #333;
+    }
+
     .shayari {
       margin-top: 18px;
       font-size: 15px;
       color: #444;
       line-height: 1.6;
       padding: 0 20px;
+      font-style: italic;
     }
 
     .final-line {
@@ -71,7 +72,7 @@
     }
 
     .music {
-      margin-top: 16px;
+      margin-top: 18px;
     }
 
     /* Floating hearts */
@@ -81,6 +82,7 @@
       font-size: 20px;
       animation: floatUp 8s linear infinite;
       opacity: 0.8;
+      z-index: 0;
     }
 
     @keyframes floatUp {
@@ -105,18 +107,20 @@
     <button id="noBtn">No 😜</button>
   </div>
 
-  <div class="subtitle">
-    Guess Kaise Hua… but it was always you 💞
-  </div>
-
-  <div class="shayari">
-    Likhu… toh lafz tum ho<br>
-    Sochu… toh khayaal tum ho<br>
-    Maangu… toh dua tum ho<br>
-    Sach kahu… toh mohabbat tum ho ❤️
-  </div>
-
+  <!-- EVERYTHING BELOW APPEARS ONLY AFTER YES -->
   <div id="afterYes" class="hidden">
+
+    <div class="subtitle">
+      Guess Kaise Hua… but it was always you 💞
+    </div>
+
+    <div class="shayari">
+      Likhu… toh lafz tum ho<br>
+      Sochu… toh khayaal tum ho<br>
+      Maangu… toh dua tum ho<br>
+      Sach kahu… toh mohabbat tum ho ❤️
+    </div>
+
     <div class="final-line">
       Here’s to making memories, together ❤️
     </div>
@@ -126,15 +130,17 @@
         Press play… this one feels like us 🤍
       </p>
 
+      <!-- YOUR SOUNDLOUD LINK -->
       <iframe
         width="100%"
         height="90"
         scrolling="no"
         frameborder="no"
         allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1621351158&color=%23ff4d79&auto_play=false&hide_related=true&show_comments=false&show_user=false">
+        src="https://w.soundcloud.com/player/?url=https%3A//on.soundcloud.com/qRNgFLDSYfWr0sy28k&color=%23ff4d79&auto_play=false&hide_related=true&show_comments=false&show_user=false">
       </iframe>
     </div>
+
   </div>
 
   <script>
@@ -154,7 +160,7 @@
       noBtn.style.transform = `translate(${x}px, ${y}px)`;
     });
 
-    // Floating hearts generator
+    // Floating hearts
     setInterval(() => {
       const heart = document.createElement("div");
       heart.className = "heart";
@@ -163,9 +169,7 @@
       heart.style.fontSize = Math.random() * 10 + 15 + "px";
       document.body.appendChild(heart);
 
-      setTimeout(() => {
-        heart.remove();
-      }, 8000);
+      setTimeout(() => heart.remove(), 8000);
     }, 600);
   </script>
 
