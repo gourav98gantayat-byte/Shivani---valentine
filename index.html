@@ -20,11 +20,13 @@
       text-align: center;
       padding: 20px;
       max-width: 90%;
+      z-index: 2;
     }
 
     h1 {
       color: #e6005c;
       font-size: 26px;
+      margin-bottom: 10px;
     }
 
     p {
@@ -58,6 +60,7 @@
       font-size: 20px;
       animation: floatUp 8s linear infinite;
       opacity: 0.7;
+      z-index: 1;
     }
 
     @keyframes floatUp {
@@ -100,16 +103,20 @@
         Here’s to making memories, together ❤️
       </p>
 
-      <!-- MUSIC (iPhone-safe) -->
+      <!-- SAIYAARA SONG -->
       <div style="margin-top:20px;">
-        <p style="font-size:15px;">Play our song 🎶</p>
+        <p style="font-size:15px; margin-bottom:8px;">
+          Press play when you’re ready ❤️
+        </p>
+
         <iframe
           width="100%"
-          height="80"
-          scrolling="no"
-          frameborder="no"
-          allow="autoplay"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1353457783&color=%23ff4d79&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false">
+          height="215"
+          src="https://www.youtube.com/embed/8QZgKx8sY9A"
+          title="Saiyaara Title Song"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
         </iframe>
       </div>
     </div>
@@ -120,6 +127,7 @@
     const noBtn = document.getElementById("no");
     const content = document.getElementById("content");
 
+    // No button runs away
     noBtn.addEventListener("mouseover", () => {
       const x = Math.random() * (window.innerWidth - 100);
       const y = Math.random() * (window.innerHeight - 50);
@@ -127,11 +135,12 @@
       noBtn.style.top = y + "px";
     });
 
+    // Yes button reveals content
     yesBtn.addEventListener("click", () => {
       content.style.display = "block";
     });
 
-    // Floating hearts generator
+    // Floating hearts
     setInterval(() => {
       const heart = document.createElement("div");
       heart.className = "heart";
