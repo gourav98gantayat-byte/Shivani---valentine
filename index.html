@@ -26,17 +26,18 @@
     h1 {
       color: #e6005c;
       font-size: 26px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     p {
       color: #333;
+      line-height: 1.6;
     }
 
     button {
       padding: 10px 22px;
-      font-size: 18px;
-      margin: 15px;
+      font-size: 16px;
+      margin: 12px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -51,6 +52,18 @@
       background-color: #999;
       color: white;
       position: absolute;
+    }
+
+    #playMusic {
+      background-color: #e6005c;
+      color: white;
+      display: none;
+      margin-top: 15px;
+    }
+
+    #content {
+      display: none;
+      margin-top: 20px;
     }
 
     /* Floating hearts */
@@ -73,11 +86,6 @@
         opacity: 0;
       }
     }
-
-    #content {
-      display: none;
-      margin-top: 20px;
-    }
   </style>
 </head>
 
@@ -90,29 +98,28 @@
     <button id="no">No 😜</button>
 
     <div id="content">
-      <p style="margin-top:15px; font-size:18px;">
+      <p style="font-size:18px;">
         Guess Kaise Hua… but it was always you 💞
       </p>
 
-      <p style="font-size:17px; font-style:italic; line-height:1.6; margin-top:10px;">
-        “Ishq ne jab tera naam liya, saans ne ibadat seekh li,<br>
-        Tu mila toh laga jaise zindagi ko wajah mil gayi.” ❤️
+      <p style="font-size:17px; font-style:italic; margin-top:12px;">
+        Likhu… Toh Lafz tum ho<br>
+        Sochu… Toh Khayaal tum ho<br>
+        Maangu… Toh dua tum ho<br>
+        Sach kahu… Toh Mohabbat tum ho ❤️
       </p>
 
       <p style="font-size:18px; margin-top:15px;">
         Here’s to making memories, together ❤️
       </p>
 
-      <!-- SAIYAARA (YouTube Music – WORKS) -->
-      <div style="margin-top:20px;">
-        <p style="font-size:15px; margin-bottom:8px;">
-          Press play when you’re ready ❤️
-        </p>
+      <button id="playMusic">▶ Play our song 🎶</button>
 
+      <div id="music" style="display:none; margin-top:15px;">
         <iframe
           width="100%"
           height="90"
-          src="https://music.youtube.com/embed/search?q=saiyaara+title+song"
+          src="https://music.youtube.com/embed/search?q=saiyaara+title+song&autoplay=1"
           frameborder="0"
           allow="autoplay; encrypted-media">
         </iframe>
@@ -124,6 +131,8 @@
     const yesBtn = document.getElementById("yes");
     const noBtn = document.getElementById("no");
     const content = document.getElementById("content");
+    const playBtn = document.getElementById("playMusic");
+    const music = document.getElementById("music");
 
     noBtn.addEventListener("mouseover", () => {
       const x = Math.random() * (window.innerWidth - 100);
@@ -134,6 +143,12 @@
 
     yesBtn.addEventListener("click", () => {
       content.style.display = "block";
+      playBtn.style.display = "inline-block";
+    });
+
+    playBtn.addEventListener("click", () => {
+      music.style.display = "block";
+      playBtn.style.display = "none";
     });
 
     setInterval(() => {
@@ -145,7 +160,7 @@
       document.body.appendChild(heart);
 
       setTimeout(() => heart.remove(), 8000);
-    }, 600);
+    }, 700);
   </script>
 
 </body>
