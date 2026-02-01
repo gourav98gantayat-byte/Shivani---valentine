@@ -1,98 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>For Shivani ❤️</title>
+
   <style>
     body {
-      height: 100vh;
       margin: 0;
+      height: 100vh;
+      background: #ffe6eb;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #ffe6eb;
       font-family: Arial, sans-serif;
       overflow: hidden;
     }
 
-    .box {
+    .container {
       text-align: center;
-      position: relative;
+      z-index: 2;
     }
 
     h1 {
-      color: #e6005c;
+      color: #e91e63;
+      font-size: 26px;
       margin-bottom: 20px;
     }
 
     button {
-      padding: 10px 20px;
-      font-size: 18px;
-      margin: 15px;
+      padding: 10px 18px;
+      font-size: 16px;
       border: none;
-      border-radius: 8px;
+      border-radius: 20px;
       cursor: pointer;
+      margin: 5px;
     }
 
-    #yes {
-      background-color: #ff4d79;
+    #yesBtn {
+      background-color: #ff5a8a;
       color: white;
     }
 
-    #no {
-      background-color: #999;
-      color: white;
+    #noBtn {
+      background-color: #bbb;
       position: absolute;
-      left: 60%;
-      top: 55%;
     }
 
-    #gif {
+    #content {
       display: none;
       margin-top: 20px;
     }
 
     img {
-      width: 250px;
-      border-radius: 10px;
+      width: 220px;
+      margin-top: 15px;
+      border-radius: 12px;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      color: #ff5a8a;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <div class="box">
+  <div class="container">
     <h1>Shivani, will you be my Valentine? ❤️</h1>
-    <button id="yes">Yes 💖</button>
-    <button id="no">No 😛</button>
 
-    <div id="gif">
-      <h2>Guess Kaise Hua… but it was always you 💕</h2>
-      <img src="https://i.imgur.com/9XnKQ0p.gif">
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 😜</button>
+
+    <div id="content">
+      <p><strong>Guess Kaise Hua… but it was always you 💕</strong></p>
+
+      <!-- SAFE GIF (works on GitHub Pages) -->
+      <img src="https://i.imgur.com/9XnKQ0p.gif" alt="Love GIF">
+
+      <p style="font-size:18px; margin-top:10px;">
+        Here’s to making memories, together ❤️
+      </p>
     </div>
   </div>
 
-  <audio id="bgMusic" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2b7b3c2c9a.mp3" type="audio/mpeg">
+  <!-- Audio (plays ONLY after Yes click) -->
+  <audio id="bgMusic">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    const noButton = document.getElementById("no");
-    const yesButton = document.getElementById("yes");
-    const gifDiv = document.getElementById("gif");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const content = document.getElementById("content");
     const music = document.getElementById("bgMusic");
 
-    // Mobile-friendly: tap instead of mouseover
-    noButton.addEventListener("click", () => {
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 100);
-      noButton.style.left = x + "px";
-      noButton.style.top = y + "px";
+    yesBtn.addEventListener("click", () => {
+      content.style.display = "block";
+      yesBtn.style.display = "none";
+      noBtn.style.display = "none";
+      music.play();
+      startHearts();
     });
 
-    yesButton.addEventListener("click", () => {
-      gifDiv.style.display = "block";
-      music.play();
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
     });
+
+    function startHearts() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }, 300);
+    }
   </script>
 
 </body>
