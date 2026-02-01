@@ -113,17 +113,11 @@
         Here’s to making memories, together ❤️
       </p>
 
-      <button id="playMusic">▶ Play our song 🎶</button>
+      <button id="playMusic">▶ Play music 🎶</button>
 
-      <div id="music" style="display:none; margin-top:15px;">
-        <iframe
-          width="100%"
-          height="90"
-          src="https://music.youtube.com/embed/search?q=saiyaara+title+song&autoplay=1"
-          frameborder="0"
-          allow="autoplay; encrypted-media">
-        </iframe>
-      </div>
+      <audio id="audio">
+        <source src="https://cdn.pixabay.com/audio/2022/10/25/audio_946bcbf43a.mp3" type="audio/mpeg">
+      </audio>
     </div>
   </div>
 
@@ -132,7 +126,7 @@
     const noBtn = document.getElementById("no");
     const content = document.getElementById("content");
     const playBtn = document.getElementById("playMusic");
-    const music = document.getElementById("music");
+    const audio = document.getElementById("audio");
 
     noBtn.addEventListener("mouseover", () => {
       const x = Math.random() * (window.innerWidth - 100);
@@ -147,8 +141,8 @@
     });
 
     playBtn.addEventListener("click", () => {
-      music.style.display = "block";
-      playBtn.style.display = "none";
+      audio.play();
+      playBtn.innerText = "🎵 Playing…";
     });
 
     setInterval(() => {
