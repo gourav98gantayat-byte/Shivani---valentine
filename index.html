@@ -53,9 +53,9 @@
     }
 
     img {
-      width: 220px;
+      width: 140px;
       margin-top: 15px;
-      border-radius: 12px;
+      opacity: 0.9;
     }
 
     /* Floating hearts */
@@ -92,8 +92,7 @@
     <div id="content">
       <p><strong>Guess Kaise Hua… but it was always you 💕</strong></p>
 
-      <!-- SAFE GIF (works on GitHub Pages) -->
-      <img src="https://i.imgur.com/9XnKQ0p.gif" alt="Love GIF">
+      <img src="https://raw.githubusercontent.com/encharm/Font-Awesome-SVG-PNG/master/black/png/512/heart.png" alt="Love">
 
       <p style="font-size:18px; margin-top:10px;">
         Here’s to making memories, together ❤️
@@ -101,9 +100,9 @@
     </div>
   </div>
 
-  <!-- Audio (plays ONLY after Yes click) -->
+  <!-- Romantic background music -->
   <audio id="bgMusic">
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/audio/2022/10/30/audio_8c6f0a5e4c.mp3" type="audio/mpeg">
   </audio>
 
   <script>
@@ -136,9 +135,7 @@
         heart.style.fontSize = Math.random() * 20 + 15 + "px";
         document.body.appendChild(heart);
 
-        setTimeout(() => {
-          heart.remove();
-        }, 6000);
+        setTimeout(() => heart.remove(), 6000);
       }, 300);
     }
   </script>
